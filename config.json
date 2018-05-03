@@ -1,0 +1,36 @@
+{
+   "containers": [
+      {
+         "image": "stress",
+         "cmd": "stress -c 1"
+      },
+      {
+         "image": "stress",
+         "cmd": "stress -c 1"
+      },
+      {
+         "image": "stress",
+         "cmd": "stress -c 1"
+      },
+      {
+         "image": "stress",
+         "cmd": "stress -c 1"
+      },
+      {
+         "image": "stress",
+         "cmd": "stress -c 1"
+      },
+      {
+         "image": "stress",
+         "cmd": "stress -c 1"
+      },
+      {
+         "image": "stress",
+         "cmd": "stress -c 1"
+      },
+      {
+         "image": "stress",
+         "cmd": "stress -c 1"
+      }
+   ]
+}
