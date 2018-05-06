@@ -9,6 +9,7 @@ import docker
 import threading
 import optparse
 import logging
+import Queue
 from DockerMonitor import DockerMonitor
 
 # --- global variables ----------------------------------------------------------------
@@ -53,9 +54,20 @@ def prog_sigint_handler(signum, frame):
 
     sys.exit(1)
 
+def publishStats(stats_object):
+    print json.dumps(stats_object, indent=2)
+    return
 
-def runMonitor(docker_hostname, container, cpu_limit, interval=2):
-    monitor = DockerMonitor(docker_hostname, container, cpu_limit, interval)
+def listenForStats(stats_queue):
+    while True:
+        try:
+            stats_object = stats_queue.get(timeout=30)
+        except Queue.Empty as e:
+            continue
+        publishStats(stats_object)
+
+def runMonitor(stats_queue, docker_hostname, container, cpu_limit, interval=2):
+    monitor = DockerMonitor(stats_queue, docker_hostname, container, cpu_limit, interval)
     dockerMonitors.append(monitor)
     monitor.start()
 
@@ -88,17 +100,26 @@ def main():
     #client = docker.DockerClient(base_url = "tcp://192.168.88.13:8081", version = "1.37")
     client = docker.DockerClient(base_url = "tcp://" + docker_hostname + ":" + docker_port, version = docker_version)
 
-    for k in xrange(len(config["containers"])):
-        logger.info("Starting up container image %s with command \"%s\"" % (config["containers"][k]["image"], config["containers"][k]["cmd"]))
-        containers.append(client.containers.run(image=config["containers"][k]["image"], command=config["containers"][k]["cmd"], detach=True, auto_remove=True))
+    stats_queue = Queue.Queue()
 
-    for i in xrange(len(containers)):
-        thread = threading.Thread(name="#"+str(i), target=runMonitor, args=(docker_hostname, containers[i], 1,))
+    for k in xrange(len(config["containers"])):
+        cpu_limit = 0
+        interval = 0
+        if "cpu_limit" in config["containers"][k]:
+            cpu_limit = config["containers"][k]["cpu_limit"]
+
+        if "interval" in config["containers"][k]:
+            interval = config["containers"][k]["interval"]
+        
+        logger.info("Starting up container image %s with command \"%s\", cpu_limit %d and interval %d" % (config["containers"][k]["image"], config["containers"][k]["cmd"], cpu_limit, interval))
+        container = client.containers.run(image=config["containers"][k]["image"], command=config["containers"][k]["cmd"], detach=True, auto_remove=True)
+        containers.append(container)
+
+        thread = threading.Thread(name="#"+str(k), target=runMonitor, args=(stats_queue, docker_hostname, container, cpu_limit, interval,))
         threadArray.append(thread)
         thread.start()
 
-    while True:
-        time.sleep(60)
+    listenForStats(stats_queue)
 
     for thread in threadArray:
         thread.join()
