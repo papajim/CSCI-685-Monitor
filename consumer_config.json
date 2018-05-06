@@ -5,8 +5,7 @@
       "username": "georgepap",
       "password": "Vw5ZGf0UNh802jl",
       "virtual_host": "panorama",
-      "exchange": "monitoring",
       "ssl": true,
-      "routing_key": "docker_monitoring"
+      "queue": "george_testQ"
    }
 }
