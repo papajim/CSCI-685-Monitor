@@ -10,7 +10,6 @@ import threading
 import optparse
 import logging
 import Queue
-import pika
 from helpers import amqp_connect
 from DockerMonitor import DockerMonitor
 
@@ -100,12 +99,17 @@ def listenForStats(stats_queue):
 
 
 def runMonitor(stats_queue, docker_hostname, container, cpu_limit, interval=2):
+    global dockerMonitors
+
     monitor = DockerMonitor(stats_queue, docker_hostname, container, cpu_limit, interval)
     dockerMonitors.append(monitor)
     monitor.start()
 
 
 def main():
+    global containers
+    global threadArray
+
     # Configure command line option parser
     prog_usage = "usage: %s [options]" % (prog_base)
     parser = optparse.OptionParser(usage=prog_usage)
