@@ -1,0 +1,112 @@
+{
+  "blkio_stats": {
+    "io_service_time_recursive": [], 
+    "sectors_recursive": [], 
+    "io_service_bytes_recursive": [], 
+    "io_serviced_recursive": [], 
+    "io_time_recursive": [], 
+    "io_queue_recursive": [], 
+    "io_merged_recursive": [], 
+    "io_wait_time_recursive": []
+  }, 
+  "precpu_stats": {
+    "cpu_usage": {
+      "usage_in_usermode": 66400000000, 
+      "total_usage": 66406884097, 
+      "percpu_usage": [
+        6389613840, 
+        26833448606, 
+        946568696, 
+        32237252955
+      ], 
+      "usage_in_kernelmode": 10000000
+    }, 
+    "system_cpu_usage": 13718157660000000, 
+    "online_cpus": 4, 
+    "throttling_data": {
+      "throttled_time": 0, 
+      "periods": 0, 
+      "throttled_periods": 0
+    }
+  }, 
+  "name": "/condescending_sinoussi", 
+  "read": "2018-05-06T17:34:36.263542698Z", 
+  "storage_stats": {}, 
+  "networks": {
+    "eth0": {
+      "tx_dropped": 0, 
+      "rx_packets": 25, 
+      "rx_bytes": 3018, 
+      "tx_errors": 0, 
+      "rx_errors": 0, 
+      "tx_bytes": 0, 
+      "rx_dropped": 0, 
+      "tx_packets": 0
+    }
+  }, 
+  "num_procs": 0, 
+  "preread": "2018-05-06T17:34:35.263628199Z", 
+  "memory_stats": {
+    "usage": 1064960, 
+    "limit": 8364396544, 
+    "stats": {
+      "unevictable": 0, 
+      "total_inactive_file": 0, 
+      "total_rss_huge": 0, 
+      "hierarchical_memsw_limit": 0, 
+      "total_cache": 0, 
+      "total_mapped_file": 0, 
+      "mapped_file": 0, 
+      "pgfault": 889, 
+      "total_writeback": 0, 
+      "hierarchical_memory_limit": 9223372036854771712, 
+      "total_active_file": 0, 
+      "rss_huge": 0, 
+      "cache": 0, 
+      "active_anon": 147456, 
+      "pgmajfault": 0, 
+      "total_pgpgout": 611, 
+      "writeback": 0, 
+      "pgpgout": 611, 
+      "total_active_anon": 147456, 
+      "total_unevictable": 0, 
+      "total_pgfault": 889, 
+      "total_pgmajfault": 0, 
+      "total_inactive_anon": 0, 
+      "inactive_file": 0, 
+      "pgpgin": 647, 
+      "total_dirty": 0, 
+      "total_pgpgin": 647, 
+      "rss": 147456, 
+      "active_file": 0, 
+      "inactive_anon": 0, 
+      "dirty": 0, 
+      "total_rss": 147456
+    }, 
+    "max_usage": 3170304
+  }, 
+  "pids_stats": {
+    "current": 3
+  }, 
+  "id": "30fa6baa84e270818e30c52429ad74684dac75c3acd2d6d75b323e3d26ce3640", 
+  "cpu_stats": {
+    "cpu_usage": {
+      "usage_in_usermode": 68400000000, 
+      "total_usage": 68398337110, 
+      "percpu_usage": [
+        6389613840, 
+        27829126254, 
+        946568696, 
+        33233028320
+      ], 
+      "usage_in_kernelmode": 10000000
+    }, 
+    "system_cpu_usage": 13718161660000000, 
+    "online_cpus": 4, 
+    "throttling_data": {
+      "throttled_time": 0, 
+      "periods": 0, 
+      "throttled_periods": 0
+    }
+  }
+}

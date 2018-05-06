@@ -1,4 +1,14 @@
 {
+   "amqp_endpoint":{
+      "hostname": "panorama.isi.edu",
+      "port": "5671",
+      "username": "georgepap",
+      "password": "Vw5ZGf0UNh802jl",
+      "virtual_host": "panorama",
+      "exchange": "monitoring",
+      "ssl": true,
+      "routing_key": "docker_monitoring"
+   },
    "docker": {
       "hostname": "127.0.0.1",
       "port": "8081",
@@ -7,7 +17,9 @@
    "containers": [
       {
          "image": "stress",
-         "cmd": "stress -c 1"
+         "cmd": "stress -d 1 --hdd-bytes 50M",
+         "cpu_limit": 0,
+         "interval": 0
       }
    ]
 }

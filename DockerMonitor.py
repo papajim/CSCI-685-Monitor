@@ -43,6 +43,30 @@ class DockerMonitor:
             #cpuPercent = (cpuDelta / systemDelta) * 100.0
 
         return cpuPercent
+    
+    def calculateBlockIO(self, stats):
+        blkRead = 0
+        blkWrite = 0
+
+        for entry in stats["blkio_stats"]["io_service_bytes_recursive"]:
+            op = entry["op"].lower()
+            if op == "read":
+                blkRead += entry["value"]
+            elif op == "write":
+                blkWrite += entry["value"]
+
+        return (blkRead, blkWrite)
+
+
+    def calculateNetwork(self, stats):
+        netRx = 0
+        netTx = 0
+
+        for iface in stats["networks"]:
+            netRx += float(stats["networks"][iface]["rx_bytes"])
+            netTx += float(stats["networks"][iface]["tx_bytes"])
+
+        return (netRx, netTx)
 
     def start(self):
         monitor_event = {}
@@ -52,8 +76,16 @@ class DockerMonitor:
         monitor_event["memory_limit"] = 0
         monitor_event["memory_usage"] = 0
         monitor_event["memory_usage_percent"] = 0
-        monitor_event["bytes_read"] = 0
-        monitor_event["bytes_write"] = 0
+        monitor_event["blkio"] = {}
+        monitor_event["blkio"]["bytes_read"] = 0
+        monitor_event["blkio"]["bytes_write"] = 0
+        monitor_event["blkio"]["read_delta"] = 0
+        monitor_event["blkio"]["write_delta"] = 0
+        monitor_event["network"] = {}
+        monitor_event["network"]["rx_bytes"] = 0
+        monitor_event["network"]["tx_bytes"] = 0
+        monitor_event["network"]["rx_delta"] = 0
+        monitor_event["network"]["tx_delta"] = 0
         
         k = 0
         start_time = time.time()
@@ -67,12 +99,25 @@ class DockerMonitor:
             if round(time.time() - start_time) >= self.interval:
                 monitor_event["start_timestamp"] = int(start_time)
                 monitor_event["end_timestamp"] = int(time.time())
-                monitor_event["cpu_usage"] /= k*1.0
-                monitor_event["memory_usage"] /= k*1.0
+                monitor_event["cpu_usage"] = round(monitor_event["cpu_usage"] / k*1.0, 2)
+                monitor_event["memory_usage"] = round(monitor_event["memory_usage"] / k*1.0, 2)
                 monitor_event["memory_limit"] = stats["memory_stats"]["limit"]
-                monitor_event["memory_usage_percent"] = monitor_event["memory_usage"] / monitor_event["memory_limit"] * 100.0
+                monitor_event["memory_usage_percent"] = round(monitor_event["memory_usage"] / monitor_event["memory_limit"] * 100.0, 2)
+                
+                (blkRead, blkWrite) = self.calculateBlockIO(stats)
+                monitor_event["blkio"]["read_delta"] = blkRead - monitor_event["blkio"]["bytes_read"]
+                monitor_event["blkio"]["write_delta"] = blkWrite - monitor_event["blkio"]["bytes_write"]
+                monitor_event["blkio"]["bytes_read"] = blkRead
+                monitor_event["blkio"]["bytes_write"] = blkWrite
+                
+                (netRx, netTx) = self.calculateNetwork(stats)
+                monitor_event["network"]["rx_delta"] = netRx - monitor_event["network"]["rx_bytes"]
+                monitor_event["network"]["tx_delta"] = netTx - monitor_event["network"]["tx_bytes"]
+                monitor_event["network"]["rx_bytes"] = netRx
+                monitor_event["network"]["tx_bytes"] = netTx
+
                 #print json.dumps(monitor_event, indent=2)
-                self.stats_queue.put(monitor_event)
+                self.stats_queue.put(json.dumps(monitor_event))
                 k = 0
                 start_time = time.time()
                 monitor_event["cpu_usage"] = 0
