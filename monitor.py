@@ -4,7 +4,7 @@ import docker
 import time
 import json
 
-def calculateCPUPercent(stats):
+def calculateCPUPercent(cpu_limit, stats):
     cpuPercent = 0.0
 
     previousCPU = float(stats["precpu_stats"]["cpu_usage"]["total_usage"])
@@ -21,8 +21,9 @@ def calculateCPUPercent(stats):
         onlineCPUs = float(len(stats["cpu_stats"]["cpu_usage"]["percpu_usage"]))
 
     if systemDelta > 0.0 and cpuDelta > 0.0:
+        cpuPercent = (cpuDelta / systemDelta) * onlineCPUs / cpu_limit * 100.0
         #cpuPercent = (cpuDelta / systemDelta) * onlineCPUs * 100.0
-        cpuPercent = (cpuDelta / systemDelta) * 100.0
+        #cpuPercent = (cpuDelta / systemDelta) * 100.0
 
     return cpuPercent
 
@@ -43,7 +44,7 @@ def monitor(container):
     for i in xrange(10):
         start = time.time()
         stats = container.stats(stream=False)
-        cpu_usage = calculateCPUPercent(stats)
+        cpu_usage = calculateCPUPercent(1, stats)
         end = time.time()
         
         print end - start
