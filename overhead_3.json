@@ -1,0 +1,319 @@
+{
+   "amqp_endpoint":{
+      "hostname": "panorama.isi.edu",
+      "port": "5671",
+      "username": "georgepap",
+      "password": "Vw5ZGf0UNh802jl",
+      "virtual_host": "panorama",
+      "exchange": "monitoring",
+      "ssl": true,
+      "routing_key": "docker_monitoring"
+   },
+   "docker": {
+      "hostname": "127.0.0.1",
+      "port": "8081",
+      "version": "1.35"
+   },
+   "containers": [
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      },
+      {
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
+         "cpu_limit": 0,
+         "interval": 20
+      }
+   ]
+}

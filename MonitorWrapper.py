@@ -156,7 +156,7 @@ def main():
         ports_dict = {}
         if "ports" in config["containers"][k]:
             ports_dict = config["containers"][k]["ports"]
-        
+
         logger.info("Starting up container image %s with command \"%s\", cpu_limit %d and interval %d" % (config["containers"][k]["image"], config["containers"][k]["cmd"], cpu_limit, interval))
         container = client.containers.run(image=config["containers"][k]["image"],
                                           command=config["containers"][k]["cmd"],

@@ -16,22 +16,10 @@
    },
    "containers": [
       {
-         "image": "memcached",
-         "name": "memchached_1",
-         "ports": {"11211/tcp": 45001},
-         "cmd": "-m 2048",
+         "image": "stress",
+         "cmd": "/usr/sbin/sshd -D",
          "cpu_limit": 0,
-         "mem_limit": "2100m",
-         "interval": 0
-      },
-      {
-         "image": "memcached",
-         "name": "memchached_2",
-         "ports": {"11211/tcp": 45002},
-         "cmd": "-m 2048",
-         "cpu_limit": 1,
-         "mem_limit": "2100m",
-         "interval": 0
+         "interval": 20
       }
    ]
 }
