@@ -20,7 +20,7 @@
          "name": "memchached_1",
          "ports": {"11211/tcp": 45001},
          "cmd": "-m 2048",
-         "cpu_limit": 0,
+         "cpu_limit": 2,
          "mem_limit": "2100m",
          "interval": 0
       },
@@ -29,7 +29,7 @@
          "name": "memchached_2",
          "ports": {"11211/tcp": 45002},
          "cmd": "-m 2048",
-         "cpu_limit": 1,
+         "cpu_limit": 2,
          "mem_limit": "2100m",
          "interval": 0
       }
