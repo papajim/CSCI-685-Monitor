@@ -16,16 +16,12 @@
    },
    "containers": [
       {
-         "image": "stress",
-         "cmd": "stress -c 2",
-         "cpu_limit": 1,
-         "interval": 4
-      },
-      {
-         "image": "stress",
-         "cmd": "stress -c 4",
-         "cpu_limit": 1,
-         "interval": 4
+         "image": "memcached",
+         "name": "memchached_1",
+         "publish": ["45001:11211"],
+         "cmd": "-m 128",
+         "cpu_limit": 0,
+         "interval": 0
       }
    ]
 }

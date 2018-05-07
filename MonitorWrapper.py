@@ -142,15 +142,30 @@ def main():
 
     for k in xrange(len(config["containers"])):
         cpu_limit = 0
+        mem_limit = 0
         interval = 0
         if "cpu_limit" in config["containers"][k]:
             cpu_limit = config["containers"][k]["cpu_limit"]
+        
+        if "mem_limit" in config["containers"][k]:
+            mem_limit = config["containers"][k]["mem_limit"]
 
         if "interval" in config["containers"][k]:
             interval = config["containers"][k]["interval"]
+
+        ports_dict = {}
+        if "ports" in config["containers"][k]:
+            ports_dict = config["containers"][k]["ports"]
         
         logger.info("Starting up container image %s with command \"%s\", cpu_limit %d and interval %d" % (config["containers"][k]["image"], config["containers"][k]["cmd"], cpu_limit, interval))
-        container = client.containers.run(image=config["containers"][k]["image"], command=config["containers"][k]["cmd"], detach=True, auto_remove=True)
+        container = client.containers.run(image=config["containers"][k]["image"],
+                                          command=config["containers"][k]["cmd"],
+                                          nano_cpus=int(cpu_limit*1e9), #0 defaults to all cpus
+                                          mem_limit = mem_limit,
+                                          ports=ports_dict,
+                                          detach=True,
+                                          auto_remove=True,
+                                          publish_all_ports=True)
         containers.append(container)
 
         thread = threading.Thread(name="#"+str(k), target=runMonitor, args=(stats_queue, docker_hostname, container, cpu_limit, interval,))
