@@ -51,7 +51,7 @@ def prog_sigint_handler(signum, frame):
 
 
 def write_stats_to_file(container_id):
-    with open(container_id[:10]+'.log', "a+") as g:
+    with open("logs/"+container_id[:12]+'.log', "a+") as g:
         for m in instances[container_id]["measurements"]:
             output = "%d    %f    %f    %d     %d     %d    %d\n" % (m["end_timestamp"], m["cpu_usage"], m["memory_usage_percent"], m["blkio"]["bytes_read"], m["blkio"]["bytes_write"], m["network"]["rx_bytes"],m["network"]["tx_bytes"])
             g.write(output)
@@ -66,14 +66,14 @@ def on_message(method_frame, header_frame, body):
     if container_id in instances:
         instances[container_id]["counter"] += 1
         instances[container_id]["measurements"].append(parsed)
-        if instances[container_id]["counter"] >= 100:
+        if instances[container_id]["counter"] >= 10:
             write_stats_to_file(container_id)
     else:
         instances[container_id] = {}
         instances[container_id]["counter"] = 1
         instances[container_id]["measurements"] = [parsed]
 
-    print json.dumps(parsed, indent=2)
+    #print json.dumps(parsed, indent=2)
     #amqp_channel.basic_ack(delivery_tag=method_frame.delivery_tag)
     
 
