@@ -1,0 +1,37 @@
+{
+   "amqp_endpoint":{
+      "hostname": "panorama.isi.edu",
+      "port": "5671",
+      "username": "georgepap",
+      "password": "Vw5ZGf0UNh802jl",
+      "virtual_host": "panorama",
+      "exchange": "monitoring",
+      "ssl": true,
+      "routing_key": "docker_monitoring"
+   },
+   "docker": {
+      "hostname": "127.0.0.1",
+      "port": "8081",
+      "version": "1.35"
+   },
+   "containers": [
+      {
+         "image": "memcached",
+         "name": "memchached_1",
+         "ports": {"11211/tcp": 45001},
+         "cmd": "-m 1024",
+         "cpu_limit": 1,
+         "mem_limit": "1100m",
+         "interval": 0
+      },
+      {
+         "image": "memcached",
+         "name": "memchached_2",
+         "ports": {"11211/tcp": 45002},
+         "cmd": "-m 2048",
+         "cpu_limit": 2,
+         "mem_limit": "2100m",
+         "interval": 0
+      }
+   ]
+}

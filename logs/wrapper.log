@@ -1,3 +1,3 @@
-2018-05-06 20:25:14,600    INFO:  Starting up container image memcached with command "-m 2048", cpu_limit 0 and interval 0
-2018-05-06 20:25:15,754    INFO:  Starting up container image memcached with command "-m 2048", cpu_limit 1 and interval 0
-2018-05-06 20:41:38,089 WARNING:  Exiting due to signal 15
+2018-05-07 13:25:53,531    INFO:  Starting up container image memcached with command "-m 2048", cpu_limit 2 and interval 0
+2018-05-07 13:25:54,825    INFO:  Starting up container image memcached with command "-m 2048", cpu_limit 2 and interval 0
+2018-05-07 13:31:44,098 WARNING:  Exiting due to signal 15
