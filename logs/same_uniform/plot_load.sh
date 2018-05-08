@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-jpeg="cpu_usage_non_balanced.jpg"
+jpeg="cpu_usage_balanced.jpg"
 
 gnuplot<<EOC
     reset

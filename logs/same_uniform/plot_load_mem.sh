@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-jpeg="mem_usage_non_balanced.jpg"
+jpeg="mem_usage_balanced.jpg"
 
 gnuplot<<EOC
     reset
